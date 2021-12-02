@@ -24,7 +24,7 @@ def clean_bchecks(bcheck):
     """
     In this function we extract year from month column and add it to the input dataframe.
     Further we add two new columns to display the total dealer and total private checks conducted.
-    :param dataframe: DataFrame containing NICS firearm background checks data.
+    :param bcheck: DataFrame containing NICS firearm background checks data.
     :return: updated DataFrame for firearm background checks
 
     """
@@ -33,10 +33,11 @@ def clean_bchecks(bcheck):
     bcheck['year'] = bcheck['date'].apply(lambda x: x[:4])
     bcheck['total_dealer_checks'] = bcheck.iloc[:, 3:8].agg(sum, axis=1)
     bcheck['total_private'] = bcheck.iloc[:, 21:23].agg(sum, axis=1)
+    bcheck = bcheck.rename(columns={'totals': 'total_checks'})
     return bcheck
 
 
-def data_aggregation_by_one_parameter(bcheck,list_of_cols_to_aggregate, on_colums_to_aggregate):
+def data_aggregation_by_parameter(bcheck,list_of_cols_to_aggregate, on_colums_to_aggregate):
     # take a list of columns as input and another list for aggreagtion
     """
     This function is used to aggregate year wise data for total backgroud checks, total dealer checks and total private checks
@@ -46,8 +47,7 @@ def data_aggregation_by_one_parameter(bcheck,list_of_cols_to_aggregate, on_colum
     :return: DataFrame of the aggregated data
 
     """
-    bcheck_year = bcheck[list_of_cols_to_aggregate].groupby(on_colums_to_aggregate).sum()
-    bcheck_year = bcheck_year.reset_index()
+    bcheck_year = bcheck[list_of_cols_to_aggregate].groupby(on_colums_to_aggregate).sum().reset_index()
     return bcheck_year
 
 
@@ -117,7 +117,7 @@ def state_abbreviations():
 }
     us_state_codes= pd.DataFrame.from_dict(us_state_to_abbrev, orient='index')
     us_state_codes= us_state_codes.reset_index()
-    us_state_codes=us_state_codes.set_axis(['states','codes'],axis=1)
+    us_state_codes=us_state_codes.set_axis(['state','codes'],axis=1)
 #     bcheck_year_state.info()
 #     us_state_codes.info()
     return us_state_codes
@@ -164,7 +164,18 @@ def violentcrime_data(start_year, end_year, state_list):
 
     return df
 
-def correlationplotnew(dataframe,plot_name):
+def cleaning_violent_crime(df_violent_crime):
+    """
+
+    :param df_violent_crime:
+    :return:
+    """
+    df_violent_crime = df_violent_crime.set_axis(['crimes', 'year', 'month', 'crime_type', 'state'], axis=1)
+    df_violent_crime = df_violent_crime.drop(['month'], axis=1)
+    return df_violent_crime
+
+
+def correlationplot(dataframe,plot_name):
     """
 
     :param dataframe:
@@ -215,6 +226,41 @@ def arrestdatahomicide(df_arrest):
 
 
 if __name__ == '__main__':
-    bchecks=clean_bchecks(importing_data('/Users/venkatasaisahitpotnuru/Downloads/nics-firearm-background-checks.csv'))
+    # bchecks=clean_bchecks(importing_data('nics-firearm-background-checks.csv'))
 
-    print(bchecks)
+    bchecks_year=data_aggregation_by_parameter(clean_bchecks(importing_data('nics-firearm-background-checks.csv')),
+                                               ['year','total_checks','total_dealer_checks','total_private'],
+                                               'year')
+
+    # Line graph has to be added here as part of EDA
+
+    bcheck_year_state=data_aggregation_by_parameter(clean_bchecks(importing_data('nics-firearm-background-checks.csv')),
+                                                    ['year','state','total_checks','total_dealer_checks','total_private'],
+                                                    ['year','state'])
+
+
+    bcheck_year_state_with_codes = merge_datasets(bcheck_year_state,state_abbreviations(),
+                                                  'left',
+                                                  ["state", "state"])
+
+    bchecks_state = data_aggregation_by_parameter(clean_bchecks(importing_data('nics-firearm-background-checks.csv')),
+                                                 ['state', 'total_checks', 'total_dealer_checks', 'total_private'],
+                                                 'state')
+
+    #bar graph has to be plotted here
+
+    state_list = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY',
+                  'LA', 'ME', 'MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR',
+                  'PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
+
+    violent_crime=cleaning_violent_crime(violentcrime_data(1999,2020,state_list))
+
+    df_violent_crime_year=data_aggregation_by_parameter(violent_crime,
+                                                        ['crimes','year','crime_type'],
+                                                        'year')
+
+    df_violent_crime_year_state=data_aggregation_by_parameter(violent_crime,
+                                                        ['crimes','year','crime_type','state'],
+                                                        ['year','state'])
+
+    print(df_violent_crime_year_state)
