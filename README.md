@@ -38,13 +38,6 @@ Six studies examined the overall effect of dealer background checks on firearm h
 
 One analysis found significant effects consistent with private-seller checks increasing firearm homicides, although these estimates became uncertain or significant in the opposite direction in different specifications. Another study found suggestive effects consistent with private-seller checks increasing firearm intimate partner homicides.
 
-## Future Scope and Analysis:
-
-We have further analysed the following:
-
-•	Effectiveness of background checks on violent crimes and homicides based on age i.e., for adults and juveniles.
-
-•	Effectiveness of background checks on violent crimes and homicides based on ethnicity i.e., for White, Black, Pacific Asian, and American Indian. 
 
 ## Conclusion:
 •	Total Background checks are highly correlated with total violent crimes committed as seen below:
@@ -65,6 +58,15 @@ Hence, we can conclude that an Increase in the background checks will decrease t
 
 
 Hence, Conclusion 2 stated above is accurate. 
+
+## Future Scope and Analysis:
+
+We have further analysed the following:
+
+•	Effectiveness of background checks on violent crimes and homicides based on age i.e., for adults and juveniles.
+
+•	Effectiveness of background checks on violent crimes and homicides based on ethnicity i.e., for White, Black, Pacific Asian, and American Indian. 
+
 
 ## Limitations:
 
