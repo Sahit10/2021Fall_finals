@@ -28,7 +28,7 @@ Crime rates are proportional to the firearm background checks processed through 
 
 •	Violent crime incidents from 1998 to 2020.
 
-Being a Type 1 project, based on the above datasets we will be analysing the conclusions stated in the research papers mentioned in References. Following are the conclusions.
+Based on the above datasets we will be analysing the conclusions stated in the research papers mentioned in References. Following are the conclusions.
 
 #### Conclusion 1: Effect of background checks on violent crimes is inconclusive. 
 
