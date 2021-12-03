@@ -39,7 +39,6 @@ def clean_bchecks(bcheck):
 
 
 def data_aggregation_by_parameter(df,list_of_cols_to_aggregate, on_colums_to_aggregate):
-    # take a list of columns as input and another list for aggreagtion
     """
     This function is used to aggregate year wise data for total backgroud checks, total dealer checks and total private checks
     :param df: Updated DataFrame containing NICS firearm background checks data
@@ -127,10 +126,10 @@ def state_abbreviations():
 def merge_datasets(df1, df2,how_to_join,columns_on_join): #how should be added as a parameter
     """
     This function is used to merge two datasets based on a common column.
-    :param df1:
-    :param df2:
-    :param how_to_join:
-    :param columns_on_join:
+    :param df1: First dataframe that has to be merged
+    :param df2: Second dataframe that has to be merged
+    :param how_to_join: Type of join we want to perform
+    :param columns_on_join: On which columns the join should happen
     :return:
     """
     bcheck_year_state_with_codes = pd.merge(df1, df2, how=how_to_join, on=columns_on_join)
@@ -139,11 +138,11 @@ def merge_datasets(df1, df2,how_to_join,columns_on_join): #how should be added a
 
 def violentcrime_data(start_year, end_year, state_list):
     """
-
-    :param start_year:
-    :param end_year:
-    :param state_list:
-    :return:
+    This function is used to fetch the violent crime data from fbi site through API.
+    :param start_year: Starting year from where the API has to fetch the data.
+    :param end_year:  Ending year till when the API has to fetch the data.
+    :param state_list: The list of state of which the API should fetch the data.
+    :return: Returns a dataframe with violent crimes from various states.
     """
     df = pd.DataFrame()
     for state in state_list:
@@ -168,9 +167,9 @@ def violentcrime_data(start_year, end_year, state_list):
 
 def cleaning_violent_crime(df_violent_crime):
     """
-
-    :param df_violent_crime:
-    :return:
+    This fucntion is used to clean the data from API to make it more meaningful and useful
+    :param df_violent_crime: The data from API goes as an input to this function
+    :return: It returns with cleaning activity for the data fetched from API
     """
     df_violent_crime = df_violent_crime.set_axis(['crimes', 'year', 'month', 'crime_type', 'state'], axis=1)
     df_violent_crime = df_violent_crime.drop(['month'], axis=1)
@@ -180,12 +179,12 @@ def cleaning_violent_crime(df_violent_crime):
 
 def correlationplot(dataframe,plot_name):
     """
-
-    :param dataframe:
-    :param plot_name:
-    :return:
+    This function is used to plot a correlation plot for the given dataframes
+    :param dataframe: The dataframe for which the correlation plot has to be plotted.
+    :param plot_name: The name of the plot we have plotted using the mentioned dataframe
+    :return: Return a heatmap with the correlation plot
     """
-    plt.figure(figsize=(16, 6))
+    plt.figure(figsize=(20, 15))
     mask = np.triu(np.ones_like(dataframe.corr(), dtype=bool))
     heatmap = sns.heatmap(dataframe.corr(), mask=mask, vmin=-1, vmax=1, annot=True, cmap='BrBG')
     heatmap.set_title(plot_name, fontdict={'fontsize':18}, pad=16)
@@ -194,10 +193,10 @@ def correlationplot(dataframe,plot_name):
 
 def statefilter(states, bcheck_crimes_state_year):
     """
-
-    :param states:
-    :param bcheck_crimes_state_year:
-    :return:
+    This function is used to apply a filter on the data for the qualifying states.
+    :param states: States for which the data has to be filtered
+    :param bcheck_crimes_state_year: The dataframe which has to be filtered for the mentioned states.
+    :return: Return a dataframe with the filtered data
     """
     list_of_states = states
     df = bcheck_crimes_state_year[bcheck_crimes_state_year['codes'].isin(list_of_states)]
@@ -206,9 +205,9 @@ def statefilter(states, bcheck_crimes_state_year):
 
 def arrestdataviolentcrimes(df_arrest):
     """
-
-    :param df_arrest:
-    :return:
+    This function is used to clean the arrest data with filtering out to violent crimes
+    :param df_arrest: The dataframe which has arrest data loaded in it.
+    :return: A dataframe which is filtered with violent crimes and aggregated at year level
     """
 
     df_arrest['total_arrests']=df_arrest['total_male']+df_arrest['total_female']
@@ -221,8 +220,9 @@ def arrestdataviolentcrimes(df_arrest):
 def arrestdatahomicide(df_arrest):
     """
 
-    :param df_arrest:
-    :return:
+    This function is used to clean the arrest data with filtering out to homicides
+    :param df_arrest: The dataframe which has arrest data loaded in it.
+    :return: A dataframe which is filtered with homicides and aggregated at year level
     """
 
     df_arrest['total_arrests']=df_arrest['total_male']+df_arrest['total_female']
@@ -233,7 +233,6 @@ def arrestdatahomicide(df_arrest):
 
 
 if __name__ == '__main__':
-    # bchecks=clean_bchecks(importing_data('nics-firearm-background-checks.csv'))
 
     bchecks_year=data_aggregation_by_parameter(clean_bchecks(importing_data('nics-firearm-background-checks.csv')),
                                                ['year','total_checks','total_dealer_checks','total_private'],
@@ -281,9 +280,6 @@ if __name__ == '__main__':
                                         left_on=['year', 'codes'],
                                         right_on=['year', 'state'])
 
-    correlationplot(bcheck_crimes_state_year,
-                    'violent crimes on Bchecks')
-    plt.show()
 
     states_with_dealerchecks_mandatory = ['CA','CO','CT','DE','MD','NV','NJ','NM','NY','OR','RI','VT','VA','WA']
 
