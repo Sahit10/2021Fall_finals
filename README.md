@@ -85,6 +85,9 @@ We have further analysed the following:
 
 
 ## Limitations:
+1. Time frames of the events taken into consideration are different across different cross sections.
+2. The type of crimes taken into consideration are different across different studies.
+3. Different states have different kinds of rules to handle gun violence so cummulative study might have impact due to the difference in rules.
 
 ## References:
 1.	https://www.rand.org/research/gun-policy/analysis/background-checks.html#fn2
