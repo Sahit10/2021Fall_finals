@@ -66,6 +66,19 @@ We have further analysed the following:
 •	Effectiveness of background checks on violent crimes and homicides based on age i.e., for adults and juveniles.
 
 •	Effectiveness of background checks on violent crimes and homicides based on ethnicity i.e., for White, Black, Pacific Asian, and American Indian. 
+  
+ ![](Images/Adult_homicide.png)
+ 
+ ![](Images/adult_violent_crime.png)
+ 
+ ![](Images/Juvi_homicide.png)
+ 
+ ![](Images/Juvi_violent_crime.png)
+ 
+ ![](Images/Adult_Juvi_homicide.png)
+ 
+ ![](Images/Adult_Juvi_violent_crime.png)
+  
 
 
 ## Limitations:
