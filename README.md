@@ -51,7 +51,7 @@ We have further analysed the following:
 ## Conclusion:
 •	Dealer background checks are negatively corelated with total number of homicides as seen below:
 
- ![image](https://user-images.githubusercontent.com/89816055/144548705-332a72a5-3819-4c47-8654-7af8a1d46796.png)
+ ![](Images/Bchecks_Firearm_homicides.png)
 
 
 Hence, Conclusion 2 stated above is accurate. 
