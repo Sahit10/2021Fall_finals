@@ -32,13 +32,32 @@ Being a Type 1 project, based on the above datasets we will be analysing the con
 
 #### Conclusion 1: Effect of background checks on violent crimes is inconclusive. 
 
-#### Conclusion 2: Dealer background checks may reduce firearm homicides.
+#### Conclusion 2: Background checks may reduce firearm homicides and private-seller background checks on firearm homicides is inconclusive.
 
 Six studies examined the overall effect of dealer background checks on firearm homicide rates: Two used large independent data sets and found significant effects indicating that dealer background checks reduce firearm homicides
 
-#### Conclusion 3: Effect of private-seller background checks on firearm homicides is inconclusive.
-
 One analysis found significant effects consistent with private-seller checks increasing firearm homicides, although these estimates became uncertain or significant in the opposite direction in different specifications. Another study found suggestive effects consistent with private-seller checks increasing firearm intimate partner homicides.
+
+
+## Conclusion:
+•	Total Background checks are highly correlated with total violent crimes committed as seen below:
+
+![](Images/Violent_crimes_bchecks.png)
+
+Now only considering California, Colorado, Delaware, Maryland, Nevada, New Jersey, New York, Oregon, Vermont, and Washington where background checks are mandatory. Firearm transfers are conducted by or processed through licensed dealers, who conduct background checks on prospective firearm purchasers or recipients.
+
+Total Background checks are highly correlated with total violent crimes committed as seen in the below plot:
+
+![](Images/Bchecks_violent_Filtered_states_crimes.png)
+
+Hence, we can conclude that an Increase in the background checks will decrease the rate of violent crimes.
+
+•	Dealer background checks are negatively corelated with total number of homicides as seen below:
+
+ ![](Images/Bchecks_Firearm_homicides.png)
+
+
+Hence, Conclusion 2 stated above is accurate. 
 
 ## Future Scope and Analysis:
 
@@ -47,14 +66,20 @@ We have further analysed the following:
 •	Effectiveness of background checks on violent crimes and homicides based on age i.e., for adults and juveniles.
 
 •	Effectiveness of background checks on violent crimes and homicides based on ethnicity i.e., for White, Black, Pacific Asian, and American Indian. 
+  
+ ![](Images/Adult_homicide.png)
+ 
+ ![](Images/adult_violent_crime.png)
+ 
+ ![](Images/Juvi_homicide.png)
+ 
+ ![](Images/Juvi_violent_crimes.png)
+ 
+ ![](Images/Adult_Juvi_Homicides.png)
+ 
+ ![](Images/Adult_Juvi_Violent_Crime.png)
+  
 
-## Conclusion:
-•	Dealer background checks are negatively corelated with total number of homicides as seen below:
-
- ![image](https://user-images.githubusercontent.com/89816055/144548705-332a72a5-3819-4c47-8654-7af8a1d46796.png)
-
-
-Hence, Conclusion 2 stated above is accurate. 
 
 ## Limitations:
 
