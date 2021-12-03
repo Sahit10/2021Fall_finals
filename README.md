@@ -42,6 +42,11 @@ One analysis found significant effects consistent with private-seller checks inc
 ## Conclusion:
 •	Total Background checks are highly negatively correlated with total violent crimes committed as seen below:
 
+
+![](Images/Background_checks_trend.png)
+
+![](Images/Background_checks_states.png)
+
 ![](Images/Violent_crimes_bchecks.png)
 
 Now only considering California, Colorado, Delaware, Maryland, Nevada, New Jersey, New York, Oregon, Vermont, and Washington where background checks are mandatory. Firearm transfers are conducted by or processed through licensed dealers, who conduct background checks on prospective firearm purchasers or recipients.
