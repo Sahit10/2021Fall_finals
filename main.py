@@ -34,21 +34,23 @@ def clean_bchecks(bcheck):
     bcheck['total_dealer_checks'] = bcheck.iloc[:, 3:8].agg(sum, axis=1)
     bcheck['total_private'] = bcheck.iloc[:, 21:23].agg(sum, axis=1)
     bcheck = bcheck.rename(columns={'totals': 'total_checks'})
+    bcheck['year'] = bcheck['year'].astype(str).astype(int)
     return bcheck
 
 
-def data_aggregation_by_parameter(bcheck,list_of_cols_to_aggregate, on_colums_to_aggregate):
+def data_aggregation_by_parameter(df,list_of_cols_to_aggregate, on_colums_to_aggregate):
     # take a list of columns as input and another list for aggreagtion
     """
     This function is used to aggregate year wise data for total backgroud checks, total dealer checks and total private checks
-    :param bcheck: Updated DataFrame containing NICS firearm background checks data
+    :param df: Updated DataFrame containing NICS firearm background checks data
     :param list_of_cols_to_aggregate: Column to be aggregated
     :param on_colums_to_aggregate: Column based on which data is aggregated
     :return: DataFrame of the aggregated data
 
     """
-    bcheck_year = bcheck[list_of_cols_to_aggregate].groupby(on_colums_to_aggregate).sum().reset_index()
-    return bcheck_year
+    df = df[list_of_cols_to_aggregate].groupby(on_colums_to_aggregate).sum().reset_index()
+
+    return df
 
 
 def state_abbreviations():
@@ -172,6 +174,7 @@ def cleaning_violent_crime(df_violent_crime):
     """
     df_violent_crime = df_violent_crime.set_axis(['crimes', 'year', 'month', 'crime_type', 'state'], axis=1)
     df_violent_crime = df_violent_crime.drop(['month'], axis=1)
+
     return df_violent_crime
 
 
@@ -207,6 +210,8 @@ def arrestdataviolentcrimes(df_arrest):
     :param df_arrest:
     :return:
     """
+
+    df_arrest['total_arrests']=df_arrest['total_male']+df_arrest['total_female']
     list_of_violent_crimes =['Murder and Nonnegligent Homicide','Aggravated Assault','Rape','Robbery','Sex Offenses','Manslaughter by Negligence','Simple Assault']
     df_arrest_violent_crimes=df_arrest[df_arrest['offense_name'].isin(list_of_violent_crimes)]
     df_arrest_violent_crimes=df_arrest_violent_crimes[['year','total_arrests','white','black','asian_pacific_islander','american_indian']].groupby('year').sum().reset_index()
@@ -219,6 +224,8 @@ def arrestdatahomicide(df_arrest):
     :param df_arrest:
     :return:
     """
+
+    df_arrest['total_arrests']=df_arrest['total_male']+df_arrest['total_female']
     list_of_homicides=['Murder and Nonnegligent Homicide','Manslaughter by Negligence']
     df_arrest_homicides=df_arrest[df_arrest['offense_name'].isin(list_of_homicides)]
     df_arrest_homicides=df_arrest_homicides[['year','total_arrests','white','black','asian_pacific_islander','american_indian']].groupby('year').sum().reset_index()
@@ -263,4 +270,89 @@ if __name__ == '__main__':
                                                         ['crimes','year','crime_type','state'],
                                                         ['year','state'])
 
-    print(df_violent_crime_year_state)
+    correlationplot(merge_datasets(bchecks_year,df_violent_crime_year,
+                                   'left',
+                                   ["year",'year']),
+                    'violent crimes on Bchecks')
+    plt.show()
+
+    bcheck_crimes_state_year = pd.merge(bcheck_year_state_with_codes, df_violent_crime_year_state,
+                                        how='right',
+                                        left_on=['year', 'codes'],
+                                        right_on=['year', 'state'])
+
+    correlationplot(bcheck_crimes_state_year,
+                    'violent crimes on Bchecks')
+    plt.show()
+
+    states_with_dealerchecks_mandatory = ['CA','CO','CT','DE','MD','NV','NJ','NM','NY','OR','RI','VT','VA','WA']
+
+    correlationplot( data_aggregation_by_parameter(statefilter(states_with_dealerchecks_mandatory,
+                                                              bcheck_crimes_state_year),
+                                                ['year', 'total_checks',
+                                                'total_dealer_checks',
+                                                'total_private', 'crimes']
+                                                ,'year'
+                                                 )
+                  ,'Violent crimes on bchecks with filtered states where dealer checks are mandatory'
+                  )
+    plt.show()
+
+    correlationplot(merge_datasets(bchecks_year,importing_data('firearm_homicides.csv'),
+                                   'right',
+                                   ['year','year']
+                                   )
+                    ,'Bchecks effectiveness across firearm homicides'
+                    )
+    plt.show()
+
+    correlationplot(merge_datasets(bchecks_year, arrestdataviolentcrimes(importing_data('arrests_national_adults.csv'))
+                                   ,'right'
+                                   ,['year','year']
+                                   ),
+                    'Adult & Violent Crimes')
+    plt.show()
+
+    correlationplot(merge_datasets(bchecks_year, arrestdatahomicide(importing_data('arrests_national_adults.csv'))
+                                   , 'right'
+                                   , ['year', 'year']
+                                   ),
+                    'Adult & Homicides')
+    plt.show()
+
+    correlationplot(merge_datasets(bchecks_year, arrestdataviolentcrimes(importing_data('arrests_national_juvenile.csv'))
+                                   , 'right'
+                                   , ['year', 'year']
+                                   ),
+                    'Juvi & Violent Crimes')
+    plt.show()
+
+    correlationplot(merge_datasets(bchecks_year, arrestdatahomicide(importing_data('arrests_national_juvenile.csv'))
+                                   , 'right'
+                                   , ['year', 'year']
+                                   ),
+                    'Juvi & Homicides')
+
+    plt.show()
+
+    correlationplot(
+        merge_datasets(bchecks_year, arrestdataviolentcrimes(pd.concat([importing_data('arrests_national_juvenile.csv'),
+                                                                       importing_data('arrests_national_juvenile.csv')]))
+                       , 'right'
+                       , ['year', 'year']
+                       ),
+        'Adult,Juvi & Violent Crimes')
+
+    plt.show()
+
+    correlationplot(
+        merge_datasets(bchecks_year, arrestdatahomicide(pd.concat([importing_data('arrests_national_juvenile.csv'),
+                                                                       importing_data('arrests_national_juvenile.csv')]))
+                                                             , 'right'
+                                                             , ['year', 'year']
+                                                             ),
+                       'Adult,Juvi & Homicides')
+
+    plt.show()
+
+
