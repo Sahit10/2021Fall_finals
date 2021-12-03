@@ -1,4 +1,10 @@
 # 2021Fall_finals
+
+Team Members:
+
+1. Sahit Potnuru (potnuru3), GitHub: sahit10
+2. Vanika Gupta (vanikag2), GitHub: VanikaGupta95
+
 ## Team Members:
 1.	Sahit Potnuru (potnuru3), GitHub: sahit10
 2.	Vanika Gupta (vanikag2), GitHub: VanikaGupta95

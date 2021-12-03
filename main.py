@@ -184,7 +184,7 @@ def correlationplot(dataframe,plot_name):
     :param plot_name: The name of the plot we have plotted using the mentioned dataframe
     :return: Return a heatmap with the correlation plot
     """
-    plt.figure(figsize=(20, 15))
+    plt.figure(figsize=(15, 15))
     mask = np.triu(np.ones_like(dataframe.corr(), dtype=bool))
     heatmap = sns.heatmap(dataframe.corr(), mask=mask, vmin=-1, vmax=1, annot=True, cmap='BrBG')
     heatmap.set_title(plot_name, fontdict={'fontsize':18}, pad=16)
