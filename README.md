@@ -62,8 +62,6 @@ Hence, we can conclude that an Increase in the background checks will decrease t
  ![](Images/Bchecks_Firearm_homicides.png)
 
 
-Hence, Conclusion 2 stated above is accurate. 
-
 ## Future Scope and Analysis:
 
 We have further analysed the following:
