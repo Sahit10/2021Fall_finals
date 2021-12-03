@@ -32,11 +32,9 @@ Being a Type 1 project, based on the above datasets we will be analysing the con
 
 #### Conclusion 1: Effect of background checks on violent crimes is inconclusive. 
 
-#### Conclusion 2: Dealer background checks may reduce firearm homicides.
+#### Conclusion 2: Background checks may reduce firearm homicides and private-seller background checks on firearm homicides is inconclusive.
 
 Six studies examined the overall effect of dealer background checks on firearm homicide rates: Two used large independent data sets and found significant effects indicating that dealer background checks reduce firearm homicides
-
-#### Conclusion 3: Effect of private-seller background checks on firearm homicides is inconclusive.
 
 One analysis found significant effects consistent with private-seller checks increasing firearm homicides, although these estimates became uncertain or significant in the opposite direction in different specifications. Another study found suggestive effects consistent with private-seller checks increasing firearm intimate partner homicides.
 
