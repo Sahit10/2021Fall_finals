@@ -40,19 +40,19 @@ One analysis found significant effects consistent with private-seller checks inc
 
 
 ## Conclusion:
-•	Total Background checks are highly correlated with total violent crimes committed as seen below:
+•	Total Background checks are highly negatively correlated with total violent crimes committed as seen below:
 
 ![](Images/Violent_crimes_bchecks.png)
 
 Now only considering California, Colorado, Delaware, Maryland, Nevada, New Jersey, New York, Oregon, Vermont, and Washington where background checks are mandatory. Firearm transfers are conducted by or processed through licensed dealers, who conduct background checks on prospective firearm purchasers or recipients.
 
-Total Background checks are highly correlated with total violent crimes committed as seen in the below plot:
+Total Background checks are highly negatively correlated with total violent crimes committed as seen in the below plot:
 
 ![](Images/Bchecks_violent_Filtered_states_crimes.png)
 
 Hence, we can conclude that an Increase in the background checks will decrease the rate of violent crimes.
 
-•	Dealer background checks are negatively corelated with total number of homicides as seen below:
+•	Dealer background checks are slightly negatively corelated with total number of homicides, Private seller background checks are slighlty positively correlated with total number of homicides also Total Checks are almost showing very less to no correlation with homicides as seen below:
 
  ![](Images/Bchecks_Firearm_homicides.png)
 
@@ -62,8 +62,6 @@ Hence, Conclusion 2 stated above is accurate.
 ## Future Scope and Analysis:
 
 We have further analysed the following:
-
-•	Effectiveness of background checks on violent crimes and homicides based on age i.e., for adults and juveniles.
 
 •	Effectiveness of background checks on violent crimes and homicides based on ethnicity i.e., for White, Black, Pacific Asian, and American Indian. 
   
