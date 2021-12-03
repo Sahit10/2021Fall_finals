@@ -73,11 +73,11 @@ We have further analysed the following:
  
  ![](Images/Juvi_homicide.png)
  
- ![](Images/Juvi_violent_crime.png)
+ ![](Images/Juvi_violent_crimes.png)
  
- ![](Images/Adult_Juvi_homicide.png)
+ ![](Images/Adult_Juvi_Homicides.png)
  
- ![](Images/Adult_Juvi_violent_crime.png)
+ ![](Images/Adult_Juvi_Violent_Crime.png)
   
 
 
