@@ -18,21 +18,21 @@ Universal background check may reduce gun-related homicides or violent crimes by
 ## Project Goal:
 Crime rates are proportional to the firearm background checks processed through the National Instant Criminal Background Check System (NICS). It is necessary that background checks must be conducted before possessing a firearm. We have considered five data sets:
 
-•	NICS firearm background checks from 1998 to 2021
+•	[NICS firearm background checks from 1998 to 2021](https://github.com/Sahit10/2021Fall_finals/blob/main/Firearm_homicides.csv)
 
-•	Crimes committed by adults in the age group 18 to 65 years from 1994 till 2016.
+•	[Crimes committed by adults in the age group 18 to 65 years from 1994 till 2016.](https://github.com/Sahit10/2021Fall_finals/blob/main/arrests_national_adults.csv)
 
-•	Crimes committed by juveniles in the age group 0 to 17 years 1994 till 2016.
+•	[Crimes committed by juveniles in the age group 0 to 17 years 1994 till 2016.](https://github.com/Sahit10/2021Fall_finals/blob/main/arrests_national_juvinile.csv)
 
-•	Total firearm homicide incidents from 2014 till 2020.
+•	[Total firearm homicide incidents from 2014 till 2020.](https://github.com/Sahit10/2021Fall_finals/blob/main/Firearm_homicides.csv)
 
-•	Violent crime incidents from 1998 to 2020.
+•	Violent crime incidents from 1998 to 2020 - API 
 
-Being a Type 1 project, based on the above datasets we will be analysing the conclusions stated in the research papers mentioned in References. Following are the conclusions.
+Based on the above datasets we will be analysing the conclusions stated in the research papers mentioned in References. Following are the conclusions.
 
-#### Conclusion 1: Effect of background checks on violent crimes is inconclusive. 
+#### Conclusion 1: Effect of background checks on violent crimes and total homicides is inconclusive. 
 
-#### Conclusion 2: Background checks may reduce firearm homicides and private-seller background checks on firearm homicides is inconclusive.
+#### Conclusion 2: Dealer Background checks may reduce firearm homicides and private-seller background checks on firearm homicides is inconclusive.
 
 Six studies examined the overall effect of dealer background checks on firearm homicide rates: Two used large independent data sets and found significant effects indicating that dealer background checks reduce firearm homicides
 
@@ -41,6 +41,11 @@ One analysis found significant effects consistent with private-seller checks inc
 
 ## Conclusion:
 •	Total Background checks are highly negatively correlated with total violent crimes committed as seen below:
+
+
+![](Images/Background_checks_trend.png)
+
+![](Images/Background_checks_states.png)
 
 ![](Images/Violent_crimes_bchecks.png)
 
@@ -56,8 +61,6 @@ Hence, we can conclude that an Increase in the background checks will decrease t
 
  ![](Images/Bchecks_Firearm_homicides.png)
 
-
-Hence, Conclusion 2 stated above is accurate. 
 
 ## Future Scope and Analysis:
 
@@ -80,6 +83,9 @@ We have further analysed the following:
 
 
 ## Limitations:
+1. Time frames of the events taken into consideration are different across different cross sections.
+2. The type of crimes taken into consideration are different across different studies.
+3. Different states have different kinds of rules to handle gun violence so cummulative study might have impact due to the difference in rules.
 
 ## References:
 1.	https://www.rand.org/research/gun-policy/analysis/background-checks.html#fn2
