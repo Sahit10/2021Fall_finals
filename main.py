@@ -203,10 +203,14 @@ def merge_datasets(df1, df2,how_to_join,columns_on_join): #how should be added a
     :param columns_on_join: On which columns the join should happen
     :return: A dataframe with the combination of required columns from both the given dataframes
     >>> df=importing_data('Test.csv')
-    >>> d = {'col1': [1, 2], 'col2': [3, 4]}
+    >>> d = {'Test_col1': [1, 2], 'Test_col3': [3, 4]}
     >>> df1 = pd.DataFrame(data=d)
-    >>> df2 = merge_datasets(df,df1,'left',["Test_col2","col1"])
+    >>> df2 = merge_datasets(df,df1,'left',["Test_col1","Test_col1"])
     >>> df2
+       Test_col1  Test_col2  Test_col3
+    0          1          2          3
+    1          1          2          3
+
     """
     Joined_df = pd.merge(df1, df2, how=how_to_join, on=columns_on_join)
     return Joined_df
@@ -219,6 +223,7 @@ def violentcrime_data(start_year, end_year, state_list):
     :param end_year:  Ending year till when the API has to fetch the data.
     :param state_list: The list of state of which the API should fetch the data.
     :return: Returns a dataframe with violent crimes from various states.
+
     """
     df = pd.DataFrame()
     for state in state_list:
@@ -264,8 +269,8 @@ def correlationplot(dataframe,plot_name):
     mask = np.triu(np.ones_like(dataframe.corr(), dtype=bool))
     heatmap = sns.heatmap(dataframe.corr(), mask=mask, vmin=-1, vmax=1, annot=True, cmap='BrBG',annot_kws={"size":20})
     heatmap.set_title(plot_name, fontdict={'fontsize':24}, pad=16)
-    heatmap.set_xticklabels(heatmap.get_xticklabels(), rotation=45, ha="right",fontdict={'fontsize':14})
-    heatmap.set_yticklabels(heatmap.get_yticklabels(), rotation=60, ha="right",fontdict={'fontsize':14})
+    heatmap.set_xticklabels(heatmap.get_xticklabels(), rotation=30, ha="right",fontdict={'fontsize':14})
+    heatmap.set_yticklabels(heatmap.get_yticklabels(), rotation=45, ha="right",fontdict={'fontsize':14})
     return heatmap
 
 
