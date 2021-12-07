@@ -223,7 +223,21 @@ def violentcrime_data(start_year, end_year, state_list):
     :param end_year:  Ending year till when the API has to fetch the data.
     :param state_list: The list of state of which the API should fetch the data.
     :return: Returns a dataframe with violent crimes from various states.
-
+    >>> df=violentcrime_data('2011','2011',['RI'])
+    >>> df
+    ... # doctest: +NORMALIZE_WHITESPACE
+       value  data_year  ...                                                key state
+    0    587       2011  ...                                 Aggravated Assault    RI
+    1     94       2011  ...  Sex Offenses (Except Rape, and Prostitution an...    RI
+    2      1       2011  ...                         Manslaughter by Negligence    RI
+    3      7       2011  ...               Murder and Nonnegligent Manslaughter    RI
+    4     56       2011  ...                                               Rape    RI
+    5    190       2011  ...                                            Robbery    RI
+    6   4441       2011  ...                                     Simple Assault    RI
+    7      0       2011  ...            Human Trafficking - Commercial Sex Acts    RI
+    8      0       2011  ...          Human Trafficking - Involuntary Servitude    RI
+    <BLANKLINE>
+    [9 rows x 5 columns]
     """
     df = pd.DataFrame()
     for state in state_list:
@@ -251,6 +265,18 @@ def cleaning_violent_crime(df_violent_crime):
     This fucntion is used to clean the data from API to make it more meaningful and useful
     :param df_violent_crime: The data from API goes as an input to this function
     :return: It returns with cleaning activity for the data fetched from API
+    >>> cleaning_violent_crime(violentcrime_data('2011','2011',['RI']))
+       crimes  year                                         crime_type state
+    0     587  2011                                 Aggravated Assault    RI
+    1      94  2011  Sex Offenses (Except Rape, and Prostitution an...    RI
+    2       1  2011                         Manslaughter by Negligence    RI
+    3       7  2011               Murder and Nonnegligent Manslaughter    RI
+    4      56  2011                                               Rape    RI
+    5     190  2011                                            Robbery    RI
+    6    4441  2011                                     Simple Assault    RI
+    7       0  2011            Human Trafficking - Commercial Sex Acts    RI
+    8       0  2011          Human Trafficking - Involuntary Servitude    RI
+
     """
     df_violent_crime = df_violent_crime.set_axis(['crimes', 'year', 'month', 'crime_type', 'state'], axis=1)
     df_violent_crime = df_violent_crime.drop(['month'], axis=1)
@@ -280,39 +306,24 @@ def statefilter(states, bcheck_crimes_state_year):
     :param states: States for which the data has to be filtered
     :param bcheck_crimes_state_year: The dataframe which has to be filtered for the mentioned states.
     :return: Return a dataframe with the filtered data
+
     """
-    list_of_states = states
-    df = bcheck_crimes_state_year[bcheck_crimes_state_year['codes'].isin(list_of_states)]
+    df = bcheck_crimes_state_year[bcheck_crimes_state_year['codes'].isin(states)]
     df = df.reset_index()
     return df
 
-def arrestdataviolentcrimes(df_arrest):
+def arrestdata_filter(df_arrest,list_of_crimes):
     """
-    This function is used to clean the arrest data with filtering out to violent crimes
-    :param df_arrest: The dataframe which has arrest data loaded in it.
-    :return: A dataframe which is filtered with violent crimes and aggregated at year level
-    """
-
-    df_arrest['total_arrests']=df_arrest['total_male']+df_arrest['total_female']
-    list_of_violent_crimes =['Murder and Nonnegligent Homicide','Aggravated Assault','Rape','Robbery','Sex Offenses','Manslaughter by Negligence','Simple Assault']
-    df_arrest_violent_crimes=df_arrest[df_arrest['offense_name'].isin(list_of_violent_crimes)]
-    df_arrest_violent_crimes=df_arrest_violent_crimes[['year','total_arrests','white','black','asian_pacific_islander','american_indian']].groupby('year').sum().reset_index()
-
-    return df_arrest_violent_crimes
-
-def arrestdatahomicide(df_arrest):
-    """
-
     This function is used to clean the arrest data with filtering out to homicides
     :param df_arrest: The dataframe which has arrest data loaded in it.
     :return: A dataframe which is filtered with homicides and aggregated at year level
     """
-
     df_arrest['total_arrests']=df_arrest['total_male']+df_arrest['total_female']
-    list_of_homicides=['Murder and Nonnegligent Homicide','Manslaughter by Negligence']
-    df_arrest_homicides=df_arrest[df_arrest['offense_name'].isin(list_of_homicides)]
-    df_arrest_homicides=df_arrest_homicides[['year','total_arrests','white','black','asian_pacific_islander','american_indian']].groupby('year').sum().reset_index()
-    return df_arrest_homicides
+    df_arrest_new=df_arrest[df_arrest['offense_name'].isin(list_of_crimes)]
+    df_arrest_new=df_arrest_new[['year','total_arrests','white','black','asian_pacific_islander','american_indian']].groupby('year').sum().reset_index()
+
+    return df_arrest_new
+
 
 
 if __name__ == '__main__':
@@ -404,28 +415,32 @@ if __name__ == '__main__':
                     )
     plt.show()
 
-    correlationplot(merge_datasets(bchecks_year, arrestdataviolentcrimes(importing_data('arrests_national_adults.csv'))
+    correlationplot(merge_datasets(bchecks_year, arrestdata_filter(importing_data('arrests_national_adults.csv')
+                                                                   ,['Murder and Nonnegligent Homicide','Aggravated Assault','Rape','Robbery','Sex Offenses','Manslaughter by Negligence','Simple Assault'])
                                    ,'right'
                                    ,['year','year']
                                    ),
                     'Adult & Violent Crimes')
     plt.show()
 
-    correlationplot(merge_datasets(bchecks_year, arrestdatahomicide(importing_data('arrests_national_adults.csv'))
+    correlationplot(merge_datasets(bchecks_year, arrestdata_filter(importing_data('arrests_national_adults.csv')
+                                                                   ,['Murder and Nonnegligent Homicide','Manslaughter by Negligence'])
                                    , 'right'
                                    , ['year', 'year']
                                    ),
                     'Adult & Homicides')
     plt.show()
 
-    correlationplot(merge_datasets(bchecks_year, arrestdataviolentcrimes(importing_data('arrests_national_juvenile.csv'))
+    correlationplot(merge_datasets(bchecks_year, arrestdata_filter(importing_data('arrests_national_juvenile.csv')
+                                                                     ,['Murder and Nonnegligent Homicide','Aggravated Assault','Rape','Robbery','Sex Offenses','Manslaughter by Negligence','Simple Assault'])
                                    , 'right'
                                    , ['year', 'year']
                                    ),
                     'Juvi & Violent Crimes')
     plt.show()
 
-    correlationplot(merge_datasets(bchecks_year, arrestdatahomicide(importing_data('arrests_national_juvenile.csv'))
+    correlationplot(merge_datasets(bchecks_year, arrestdata_filter(importing_data('arrests_national_juvenile.csv')
+                                                                     ,['Murder and Nonnegligent Homicide','Manslaughter by Negligence'])
                                    , 'right'
                                    , ['year', 'year']
                                    ),
@@ -434,8 +449,9 @@ if __name__ == '__main__':
     plt.show()
 
     correlationplot(
-        merge_datasets(bchecks_year, arrestdataviolentcrimes(pd.concat([importing_data('arrests_national_juvenile.csv'),
-                                                                       importing_data('arrests_national_juvenile.csv')]))
+        merge_datasets(bchecks_year, arrestdata_filter(pd.concat([importing_data('arrests_national_juvenile.csv'),
+                                                                       importing_data('arrests_national_juvenile.csv')])
+                                                         ,['Murder and Nonnegligent Homicide','Aggravated Assault','Rape','Robbery','Sex Offenses','Manslaughter by Negligence','Simple Assault'])
                        , 'right'
                        , ['year', 'year']
                        ),
@@ -444,8 +460,9 @@ if __name__ == '__main__':
     plt.show()
 
     correlationplot(
-        merge_datasets(bchecks_year, arrestdatahomicide(pd.concat([importing_data('arrests_national_juvenile.csv'),
-                                                                       importing_data('arrests_national_juvenile.csv')]))
+        merge_datasets(bchecks_year, arrestdata_filter(pd.concat([importing_data('arrests_national_juvenile.csv'),
+                                                                       importing_data('arrests_national_juvenile.csv')])
+                                                                       ,['Murder and Nonnegligent Homicide','Manslaughter by Negligence'])
                                                              , 'right'
                                                              , ['year', 'year']
                                                              ),
