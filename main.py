@@ -1,11 +1,8 @@
-import matplotlib as matplotlib
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-import json
 import requests
-# %matplotlib inline
+import seaborn as sns
 
 
 def importing_data(filename: str):
@@ -13,7 +10,10 @@ def importing_data(filename: str):
     The function takes file as an input parameter, converts it into a python DataFrame and returns the Dataframe.
     :param filename: Name of the file for which DataFrame should be created.
     :return: DataFrame of the input file consisting of all rows and columns.
-
+    >>> importing_data('Test.csv')
+       Test_col1  Test_col2
+    0          1          2
+    1          1          2
     """
     df = pd.read_csv(filename)
 
@@ -26,6 +26,12 @@ def clean_bchecks(bcheck):
     Further we add two new columns to display the total dealer and total private checks conducted.
     :param bcheck: DataFrame containing NICS firearm background checks data.
     :return: updated DataFrame for firearm background checks
+    >>> clean_bchecks( pd.read_csv('nics-firearm-background-checks.csv',nrows=4))
+       year     state  total_checks  total_dealer_checks  total_private
+    0  2021   Alabama         66499                37242             29
+    1  2021    Alaska          7572                 7065             17
+    2  2021   Arizona         38523                32597              7
+    3  2021  Arkansas         21518                16770             13
 
     """
     bcheck['date'] = pd.to_datetime(bcheck['month'])
@@ -35,6 +41,7 @@ def clean_bchecks(bcheck):
     bcheck['total_private'] = bcheck.iloc[:, 21:23].agg(sum, axis=1)
     bcheck = bcheck.rename(columns={'totals': 'total_checks'})
     bcheck['year'] = bcheck['year'].astype(str).astype(int)
+    bcheck=bcheck[['year','state','total_checks','total_dealer_checks','total_private']]
     return bcheck
 
 
@@ -45,7 +52,11 @@ def data_aggregation_by_parameter(df,list_of_cols_to_aggregate, on_colums_to_agg
     :param list_of_cols_to_aggregate: Column to be aggregated
     :param on_colums_to_aggregate: Column based on which data is aggregated
     :return: DataFrame of the aggregated data
-
+    >>> df=importing_data('Test.csv')
+    >>> df1=data_aggregation_by_parameter(df,['Test_col1','Test_col2'],['Test_col2'])
+    >>> df1
+       Test_col2  Test_col1
+    0          2          2
     """
     df = df[list_of_cols_to_aggregate].groupby(on_colums_to_aggregate).sum().reset_index()
 
@@ -56,6 +67,66 @@ def state_abbreviations():
     """
     Mapping state names to their corresponding initials
     :return: Correctly mapped state initials DataFrame
+    >>> state_abbreviations()
+                                       state codes
+    0                                Alabama    AL
+    1                                 Alaska    AK
+    2                                Arizona    AZ
+    3                               Arkansas    AR
+    4                             California    CA
+    5                               Colorado    CO
+    6                            Connecticut    CT
+    7                               Delaware    DE
+    8                                Florida    FL
+    9                                Georgia    GA
+    10                                Hawaii    HI
+    11                                 Idaho    ID
+    12                              Illinois    IL
+    13                               Indiana    IN
+    14                                  Iowa    IA
+    15                                Kansas    KS
+    16                              Kentucky    KY
+    17                             Louisiana    LA
+    18                                 Maine    ME
+    19                              Maryland    MD
+    20                         Massachusetts    MA
+    21                              Michigan    MI
+    22                             Minnesota    MN
+    23                           Mississippi    MS
+    24                              Missouri    MO
+    25                               Montana    MT
+    26                              Nebraska    NE
+    27                                Nevada    NV
+    28                         New Hampshire    NH
+    29                            New Jersey    NJ
+    30                            New Mexico    NM
+    31                              New York    NY
+    32                        North Carolina    NC
+    33                          North Dakota    ND
+    34                                  Ohio    OH
+    35                              Oklahoma    OK
+    36                                Oregon    OR
+    37                          Pennsylvania    PA
+    38                          Rhode Island    RI
+    39                        South Carolina    SC
+    40                          South Dakota    SD
+    41                             Tennessee    TN
+    42                                 Texas    TX
+    43                                  Utah    UT
+    44                               Vermont    VT
+    45                              Virginia    VA
+    46                            Washington    WA
+    47                         West Virginia    WV
+    48                             Wisconsin    WI
+    49                               Wyoming    WY
+    50                  District of Columbia    DC
+    51                        American Samoa    AS
+    52                                  Guam    GU
+    53              Northern Mariana Islands    MP
+    54                           Puerto Rico    PR
+    55  United States Minor Outlying Islands    UM
+    56                   U.S. Virgin Islands    VI
+
     """
     us_state_to_abbrev = {
     "Alabama": "AL",
@@ -130,10 +201,15 @@ def merge_datasets(df1, df2,how_to_join,columns_on_join): #how should be added a
     :param df2: Second dataframe that has to be merged
     :param how_to_join: Type of join we want to perform
     :param columns_on_join: On which columns the join should happen
-    :return:
+    :return: A dataframe with the combination of required columns from both the given dataframes
+    >>> df=importing_data('Test.csv')
+    >>> d = {'col1': [1, 2], 'col2': [3, 4]}
+    >>> df1 = pd.DataFrame(data=d)
+    >>> df2 = merge_datasets(df,df1,'left',["Test_col2","col1"])
+    >>> df2
     """
-    bcheck_year_state_with_codes = pd.merge(df1, df2, how=how_to_join, on=columns_on_join)
-    return bcheck_year_state_with_codes
+    Joined_df = pd.merge(df1, df2, how=how_to_join, on=columns_on_join)
+    return Joined_df
 
 
 def violentcrime_data(start_year, end_year, state_list):
@@ -186,8 +262,10 @@ def correlationplot(dataframe,plot_name):
     """
     plt.figure(figsize=(15, 15))
     mask = np.triu(np.ones_like(dataframe.corr(), dtype=bool))
-    heatmap = sns.heatmap(dataframe.corr(), mask=mask, vmin=-1, vmax=1, annot=True, cmap='BrBG')
-    heatmap.set_title(plot_name, fontdict={'fontsize':18}, pad=16)
+    heatmap = sns.heatmap(dataframe.corr(), mask=mask, vmin=-1, vmax=1, annot=True, cmap='BrBG',annot_kws={"size":20})
+    heatmap.set_title(plot_name, fontdict={'fontsize':24}, pad=16)
+    heatmap.set_xticklabels(heatmap.get_xticklabels(), rotation=45, ha="right",fontdict={'fontsize':14})
+    heatmap.set_yticklabels(heatmap.get_yticklabels(), rotation=60, ha="right",fontdict={'fontsize':14})
     return heatmap
 
 
@@ -238,7 +316,16 @@ if __name__ == '__main__':
                                                ['year','total_checks','total_dealer_checks','total_private'],
                                                'year')
 
-    # Line graph has to be added here as part of EDA
+    plt.rc('font', size=12)
+    fig, ax = plt.subplots(figsize=(20, 10))
+    ax.plot(bchecks_year.year, bchecks_year.total_checks, label='Total Checks')
+    ax.plot(bchecks_year.year, bchecks_year.total_dealer_checks,label = 'Total Dealer Checks')
+    ax.set_xlabel('Year')
+    ax.set_ylabel('Total Background checks')
+    ax.set_title('Background checks')
+    ax.grid(True)
+    fig.autofmt_xdate()
+    ax.legend(loc='upper left')
 
     bcheck_year_state=data_aggregation_by_parameter(clean_bchecks(importing_data('nics-firearm-background-checks.csv')),
                                                     ['year','state','total_checks','total_dealer_checks','total_private'],
@@ -253,7 +340,17 @@ if __name__ == '__main__':
                                                  ['state', 'total_checks', 'total_dealer_checks', 'total_private'],
                                                  'state')
 
-    #bar graph has to be plotted here
+    plt.rc('font', size=12)
+    fig, ax = plt.subplots(figsize=(30, 10))
+    bcheck_state = bchecks_state.sort_values('total_checks')
+    ax.bar(bcheck_state.state, bcheck_state.total_checks)
+    ax.set_xlabel('States')
+    ax.set_ylabel('Total Background checks')
+    ax.set_title('Background checks from 1998 to 2021')
+    ax.grid(True)
+    ax.legend(loc='upper left');
+    fig.autofmt_xdate()
+    plt.show()
 
     state_list = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY',
                   'LA', 'ME', 'MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR',
