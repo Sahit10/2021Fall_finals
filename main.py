@@ -41,7 +41,7 @@ def clean_bchecks(bcheck):
     bcheck['total_private'] = bcheck.iloc[:, 21:23].agg(sum, axis=1)
     bcheck = bcheck.rename(columns={'totals': 'total_checks'})
     bcheck['year'] = bcheck['year'].astype(str).astype(int)
-    bcheck=bcheck[['year','state','total_checks','total_dealer_checks','total_private']]
+    bcheck = bcheck[['year' , 'state' , 'total_checks','total_dealer_checks','total_private']]
     return bcheck
 
 
@@ -52,8 +52,8 @@ def data_aggregation_by_parameter(df,list_of_cols_to_aggregate, on_colums_to_agg
     :param list_of_cols_to_aggregate: Column to be aggregated
     :param on_colums_to_aggregate: Column based on which data is aggregated
     :return: DataFrame of the aggregated data
-    >>> df=importing_data('Test.csv')
-    >>> df1=data_aggregation_by_parameter(df,['Test_col1','Test_col2'],['Test_col2'])
+    >>> df = importing_data('Test.csv')
+    >>> df1 = data_aggregation_by_parameter(df,['Test_col1','Test_col2'],['Test_col2'])
     >>> df1
        Test_col2  Test_col1
     0          2          2
@@ -291,10 +291,10 @@ def correlationplot(dataframe,plot_name):
     :param plot_name: The name of the plot we have plotted using the mentioned dataframe
     :return: Return a heatmap with the correlation plot
     """
-    plt.figure(figsize=(15, 15))
+    plt.figure(figsize=(20, 15))
     mask = np.triu(np.ones_like(dataframe.corr(), dtype=bool))
     heatmap = sns.heatmap(dataframe.corr(), mask=mask, vmin=-1, vmax=1, annot=True, cmap='BrBG',annot_kws={"size":20})
-    heatmap.set_title(plot_name, fontdict={'fontsize':24}, pad=16)
+    heatmap.set_title(plot_name, fontdict={'fontsize':24}, pad=16 , ha="center")
     heatmap.set_xticklabels(heatmap.get_xticklabels(), rotation=30, ha="right",fontdict={'fontsize':14})
     heatmap.set_yticklabels(heatmap.get_yticklabels(), rotation=45, ha="right",fontdict={'fontsize':14})
     return heatmap
@@ -366,7 +366,7 @@ if __name__ == '__main__':
     ax.set_title('Background checks')
     ax.grid(True)
     fig.autofmt_xdate()
-    ax.legend(loc='upper left')
+    plt.legend(loc='upper left')
 
     bcheck_year_state=data_aggregation_by_parameter(clean_bchecks(importing_data('nics-firearm-background-checks.csv')),
                                                     ['year','state','total_checks','total_dealer_checks','total_private'],
@@ -389,7 +389,7 @@ if __name__ == '__main__':
     ax.set_ylabel('Total Background checks')
     ax.set_title('Background checks from 1998 to 2021')
     ax.grid(True)
-    ax.legend(loc='upper left');
+    ax.legend(loc='upper left')
     fig.autofmt_xdate()
     plt.show()
 
@@ -410,7 +410,7 @@ if __name__ == '__main__':
     correlationplot(merge_datasets(bchecks_year,df_violent_crime_year,
                                    'left',
                                    ["year",'year']),
-                    'violent crimes on Bchecks')
+                    'violent crimes on background checks from 1998 to 2020')
     plt.show()
 
     bcheck_crimes_state_year = pd.merge(bcheck_year_state_with_codes, df_violent_crime_year_state,
@@ -428,7 +428,7 @@ if __name__ == '__main__':
                                                 'total_private', 'crimes']
                                                 ,'year'
                                                  )
-                  ,'Violent crimes on bchecks with filtered states where dealer checks are mandatory'
+    ,'Violent crimes on background checks with states where dealer checks are mandatory from 1998 to 2020'
                   )
     plt.show()
 
@@ -436,7 +436,7 @@ if __name__ == '__main__':
                                    'right',
                                    ['year','year']
                                    )
-                    ,'Bchecks effectiveness across firearm homicides'
+                    ,'Background checks effectiveness on firearm homicides from 2014 to 2020'
                     )
     plt.show()
 
@@ -445,7 +445,7 @@ if __name__ == '__main__':
                                    ,'right'
                                    ,['year','year']
                                    ),
-                    'Adult & Violent Crimes')
+                    'Arrests of Adult for Violent Crimes on background checks with ethnicity from 1998 to 2016')
     plt.show()
 
     correlationplot(merge_datasets(bchecks_year, arrestdata_filter(importing_data('arrests_national_adults.csv')
@@ -453,7 +453,7 @@ if __name__ == '__main__':
                                    , 'right'
                                    , ['year', 'year']
                                    ),
-                    'Adult & Homicides')
+                    'Arrests of Adult for homicides on background checks with ethnicity from 1998 to 2016')
     plt.show()
 
     correlationplot(merge_datasets(bchecks_year, arrestdata_filter(importing_data('arrests_national_juvenile.csv')
@@ -461,7 +461,7 @@ if __name__ == '__main__':
                                    , 'right'
                                    , ['year', 'year']
                                    ),
-                    'Juvi & Violent Crimes')
+                    'Arrests of Juveniles for Violent Crimes on background checks with ethnicity from 1998 to 2016')
     plt.show()
 
     correlationplot(merge_datasets(bchecks_year, arrestdata_filter(importing_data('arrests_national_juvenile.csv')
@@ -469,7 +469,7 @@ if __name__ == '__main__':
                                    , 'right'
                                    , ['year', 'year']
                                    ),
-                    'Juvi & Homicides')
+                    'Arrests of juveniles for homicides on background checks with ethnicity from 1998 to 2016')
 
     plt.show()
 
@@ -480,7 +480,7 @@ if __name__ == '__main__':
                        , 'right'
                        , ['year', 'year']
                        ),
-        'Adult,Juvi & Violent Crimes')
+        'Arrests of adults and juveniles for violent crimes on background checks with ethnicity from 1998 to 2016')
 
     plt.show()
 
@@ -491,7 +491,7 @@ if __name__ == '__main__':
                                                              , 'right'
                                                              , ['year', 'year']
                                                              ),
-                       'Adult,Juvi & Homicides')
+        'Arrests of adults and juveniles for homicides on background checks with ethnicity from 1998 to 2016')
 
     plt.show()
 
