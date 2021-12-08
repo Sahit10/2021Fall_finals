@@ -317,6 +317,31 @@ def arrestdata_filter(df_arrest,list_of_crimes):
     This function is used to clean the arrest data with filtering out to homicides
     :param df_arrest: The dataframe which has arrest data loaded in it.
     :return: A dataframe which is filtered with homicides and aggregated at year level
+    >>> arrestdata_filter(pd.read_csv('arrests_national_adults.csv') ,['Murder and Nonnegligent Homicide','Manslaughter by Negligence'])
+        year  total_arrests  white  black  asian_pacific_islander  american_indian
+    0   1994          16834   7628   8867                     188              130
+    1   1995          16672   7668   8639                     205              138
+    2   1996          13789   6429   7017                     173              166
+    3   1997          13590   6049   7250                     171              113
+    4   1998          12774   5998   6515                     130              116
+    5   1999          11630   5491   5861                     147              118
+    6   2000          11397   5324   5785                     141              117
+    7   2001          11327   5594   5495                     128              102
+    8   2002          10975   5553   5183                     133               97
+    9   2003          10276   5306   4705                     129              119
+    10  2004          10399   5535   4613                     123              112
+    11  2005          10962   5680   4765                     129              112
+    12  2006          10399   5364   4778                     116              117
+    13  2007          10498   5387   4876                     120               98
+    14  2008          10136   5223   4668                     113              103
+    15  2009           9904   5151   4493                     106              114
+    16  2010           9045   4760   4059                      93              108
+    17  2011           8739   4425   4059                     122              114
+    18  2012           9193   4646   4293                     142              103
+    19  2013           8781   4246   4281                     138               98
+    20  2014           8725   4298   4159                     142               88
+    21  2015           9333   4470   4547                     173              118
+    22  2016           9983   4757   4912                     153              106
     """
     df_arrest['total_arrests']=df_arrest['total_male']+df_arrest['total_female']
     df_arrest_new=df_arrest[df_arrest['offense_name'].isin(list_of_crimes)]
