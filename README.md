@@ -80,31 +80,31 @@ Further analysing Adults and Juveniles crime data for total arrests which is the
 
 #### •	Arrests of adults for violent crimes:
 
-
+<img src=Images/adult_violent_crime.png width="800" height="600">
 
 Only considering adults first, the coefficient of correlation for total checks vs total violent crime arrests for adults is -0.6. This signifies they are negatively correlated indicating that if background checks are increased for adults, the total arrests for violent crimes may decrease. 
 
 #### •	Arrests of adults for homicides:
 
-
+<img src=Images/Adult_homicide.png width="800" height="600">
 
 The coefficient of correlation for total checks vs total homicide arrests for adults is -0.79 This signifies they are highly negatively correlated indicating that if background checks are increased for adults, the total arrests for homicides will decrease. 
 
 ####  •	Arrests of juveniles for violent crimes:
 
-
+<img src=Images/Juvi_violent_crimes.png width="800" height="600">
 
 Now considering juveniles, the coefficient of correlation for total checks vs total violent crime arrests for juveniles is -0.93. This signifies they are significantly negatively correlated indicating that if background checks are increased for juveniles, the total arrests for violent crimes will decrease. 
 
 #### •	Arrests of juveniles for homicides:
 
-
+<img src=Images/Juvi_homicide.png width="800" height="600">
 
 The coefficient of correlation for total checks vs total homicide arrests for juveniles is -0.86. This signifies they are highly negatively correlated indicating that if background checks are increased for juveniles, the total arrests for homicides will decrease. 
 
 #### •	Arrests of adults and juveniles for violent crimes based on ethnicity:
 
-
+<img src=Images/Adult_Juvi_Violent_Crime.png width="800" height="600">
 
 As seen in the plot above, the coefficient of correlation for total checks vs total arrests for adults and juveniles is -0.93. This signifies they are highly negatively correlated indicating that if background checks are increased for adults and juveniles, the total arrests for violent crimes will significantly decrease. 
 
