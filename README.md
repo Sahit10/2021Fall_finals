@@ -76,23 +76,48 @@ Based on our analysis we can conclude that an increase in the dealer checks may 
 
 
 ## Future Scope and Analysis:
+Further analysing Adults and Juveniles crime data for total arrests which is the cumulative of arrests for each ethnicity i.e., for White, Black, Pacific Asian, and American Indian against the total background checks conducted from 1998 till 2016.
 
-We have further analysed the following:
+#### •	Arrests of adults for violent crimes:
 
-•	Effectiveness of background checks on violent crimes and homicides based on ethnicity i.e., for White, Black, Pacific Asian, and American Indian. 
-  
- ![](Images/Adult_homicide.png)
- 
- ![](Images/adult_violent_crime.png)
- 
- ![](Images/Juvi_homicide.png)
- 
- ![](Images/Juvi_violent_crimes.png)
- 
- ![](Images/Adult_Juvi_Homicides.png)
- 
- ![](Images/Adult_Juvi_Violent_Crime.png)
-  
+
+
+Only considering adults first, the coefficient of correlation for total checks vs total violent crime arrests for adults is -0.6. This signifies they are negatively correlated indicating that if background checks are increased for adults, the total arrests for violent crimes may decrease. 
+
+#### •	Arrests of adults for homicides:
+
+
+
+The coefficient of correlation for total checks vs total homicide arrests for adults is -0.79 This signifies they are highly negatively correlated indicating that if background checks are increased for adults, the total arrests for homicides will decrease. 
+
+####  •	Arrests of juveniles for violent crimes:
+
+
+
+Now considering juveniles, the coefficient of correlation for total checks vs total violent crime arrests for juveniles is -0.93. This signifies they are significantly negatively correlated indicating that if background checks are increased for juveniles, the total arrests for violent crimes will decrease. 
+
+#### •	Arrests of juveniles for homicides:
+
+
+
+The coefficient of correlation for total checks vs total homicide arrests for juveniles is -0.86. This signifies they are highly negatively correlated indicating that if background checks are increased for juveniles, the total arrests for homicides will decrease. 
+
+#### •	Arrests of adults and juveniles for violent crimes based on ethnicity:
+
+
+
+As seen in the plot above, the coefficient of correlation for total checks vs total arrests for adults and juveniles is -0.93. This signifies they are highly negatively correlated indicating that if background checks are increased for adults and juveniles, the total arrests for violent crimes will significantly decrease. 
+
+##### Ethnicity wise analysis:
+
+Race            | Coefficient of Correlation | Interpretation
+----------------| ---------------------------| --------------------------------
+White           | -0.95                      | Significant negative correlation
+Black           | -0.82                      | Significant negative correlation
+Pacific Asian   | -0.94                      | Significant negative correlation
+American Indian | -0.88                      | Significant negative correlation
+
+As there is a significant negative correlation between total background checks and total arrests for all the ethnicities, we can clearly infer that an increase in the background checks will significantly decrease the violent crimes for adults and juveniles. 
 
 
 ## Limitations:
