@@ -67,9 +67,17 @@ Based on our analysis we can clearly deduce that an increase background check wi
 
 #### Conclusion 2: Dealer Background checks may reduce firearm homicides and private-seller background checks on firearm homicides is inconclusive.
 
-Dealer background checks are slightly negatively corelated with total number of homicides, Private seller background checks are slighlty positively correlated with total number of homicides also Total Checks are almost showing very less to no correlation with homicides as seen below:
+To understand the effect of Dealer Background checks and Private Seller checks on firearm homicides, let us refer the below graph: 
 
  ![](Images/Bchecks_Firearm_homicides.png)
+
+The coefficient of correlation is -0.35 for total dealer checks and total number of homicides. Hence, these two variables are slightly negatively correlated indicating that an increase in the dealer checks will slightly reduce the total homicide incidents. 
+
+Moving on to the total private checks, the coefficient of correlation is 0.3. This shows a slight positive correlation between total private checks and total homicides. Hence, we can deduce that an increase in the private seller background checks will increase homicide incidents. 
+
+The overall background checks have a coefficient of correlation -0.14 suggesting very less correlation will total homicides. 
+
+Based on our analysis we can conclude that an increase in the dealer checks may moderately reduce the total homicide incidents whereas an increase in the private seller background checks may moderately increase homicide incidents. 
 
 
 ## Future Scope and Analysis:
