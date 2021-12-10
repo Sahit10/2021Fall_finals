@@ -243,16 +243,14 @@ def violentcrime_data(start_year, end_year, state_list):
     for state in state_list:
         url = "https://api.usa.gov/crime/fbi/sapi/api/arrest/states/offense/{}/violent_crime/{}/{}?API_KEY=1mL3ffuFKhgkkiHWBy5bFzhSDNjN6IJYQQVIypY9".format(
             state, start_year, end_year)
-        #     print(url)
+
         payload = {}
         headers = {}
 
         response = requests.request("GET", url, headers=headers, data=payload)
-        #     print(response.text)
-
-        data1 = response.json()
+        crime_data = response.json()
         try:
-            df1 = pd.json_normalize(data1['data'])
+            df1 = pd.json_normalize(crime_data['data'])
             df1['state'] = state
             df = df.append(df1)
         except KeyError:
