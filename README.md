@@ -1,10 +1,5 @@
 # 2021Fall_finals
 
-Team Members:
-
-1. Sahit Potnuru (potnuru3), GitHub: sahit10
-2. Vanika Gupta (vanikag2), GitHub: VanikaGupta95
-
 ## Team Members:
 1.	Sahit Potnuru (potnuru3), GitHub: sahit10
 2.	Vanika Gupta (vanikag2), GitHub: VanikaGupta95
@@ -51,7 +46,7 @@ Below is a bar plot that shows state wise total number of background checks. As 
 Critiquing on the Conclusions from the research papers as stated above:
 #### Conclusion 1: Effect of background checks on violent crimes is inconclusive.
 
-![](Images/Violent_crimes_bchecks.png)
+<img src=Images/Violent_crimes_bchecks.png width="800" height="600">
 
 As highlighted, it is clearly seen that the value of correlation coefficient is -0.89 for total checks vs total crimes for the period 1998 till 2020. There is a high negative correlation between these two variables, hence an increase in the total background checks decreases total violent crimes. 
 
@@ -59,7 +54,7 @@ As highlighted, it is clearly seen that the value of correlation coefficient is 
 Now only considering California, Colorado, Delaware, Maryland, Nevada, New Jersey, New York, Oregon, Vermont, and Washington where background checks are mandatory. Firearm transfers are conducted by or processed through licensed dealers, who conduct background checks on prospective firearm purchasers or recipients.
 Looking at the correlation plot for the filtered states:
 
-![](Images/Bchecks_violent_Filtered_states_crimes.png)
+<img src=Images/Bchecks_violent_Filtered_states_crimes.png width="800" height="600">
 
 The value of correlation coefficient for total dealer checks and total background checks vs crimes is -0.86 indicating a high negative correlation between the mentioned two variables. Hence, we can conclude that an Increase in the background checks will decrease the rate of violent crimes.
 Based on our analysis we can clearly deduce that an increase background check will decrease the rate of violent crimes and hence the results are not inconclusive. 
