@@ -30,7 +30,7 @@ Crime rates are proportional to the firearm background checks processed through 
 
 Based on the above datasets we will be analysing the conclusions stated in the research papers mentioned in References. Following are the conclusions.
 
-#### Conclusion 1: Effect of background checks on violent crimes and total homicides is inconclusive. 
+#### Conclusion 1: Effect of background checks on violent crimes is inconclusive. 
 
 #### Conclusion 2: Dealer Background checks may reduce firearm homicides and private-seller background checks on firearm homicides is inconclusive.
 
@@ -40,24 +40,34 @@ One analysis found significant effects consistent with private-seller checks inc
 
 
 ## Conclusion:
-•	Total Background checks are highly negatively correlated with total violent crimes committed as seen below:
-
+As seen below the Total Background Checks and Total Dealer Checks conducted each year from 1998 till 2021 increases sharply from 1998 till 1999. After which there is a gradual increase in both the checks with minor fluctuations till 2020 and then there is a steep decline in the checks conducted. One reason can be Covid-19 pandemic which hit the world in 2020 thus reducing the total checks conducted post 2020.
 
 ![](Images/Background_checks_trend.png)
 
+Below is a bar plot that shows state wise total number of background checks. As seen, the maximum number of checks are administered in the state of Kentucky and least being in the Mariana Islands where population resides on Saipan, Tinian, and Rota. 
+
 ![](Images/Background_checks_states.png)
+
+Critiquing on the Conclusions from the research papers as stated above:
+#### Conclusion 1: Effect of background checks on violent crimes is inconclusive.
 
 ![](Images/Violent_crimes_bchecks.png)
 
-Now only considering California, Colorado, Delaware, Maryland, Nevada, New Jersey, New York, Oregon, Vermont, and Washington where background checks are mandatory. Firearm transfers are conducted by or processed through licensed dealers, who conduct background checks on prospective firearm purchasers or recipients.
+As highlighted, it is clearly seen that the value of correlation coefficient is -0.89 for total checks vs total crimes for the period 1998 till 2020. There is a high negative correlation between these two variables, hence an increase in the total background checks decreases total violent crimes. 
 
-Total Background checks are highly negatively correlated with total violent crimes committed as seen in the below plot:
+
+Now only considering California, Colorado, Delaware, Maryland, Nevada, New Jersey, New York, Oregon, Vermont, and Washington where background checks are mandatory. Firearm transfers are conducted by or processed through licensed dealers, who conduct background checks on prospective firearm purchasers or recipients.
+Looking at the correlation plot for the filtered states:
 
 ![](Images/Bchecks_violent_Filtered_states_crimes.png)
 
-Hence, we can conclude that an Increase in the background checks will decrease the rate of violent crimes.
+The value of correlation coefficient for total dealer checks and total background checks vs crimes is -0.86 indicating a high negative correlation between the mentioned two variables. Hence, we can conclude that an Increase in the background checks will decrease the rate of violent crimes.
+Based on our analysis we can clearly deduce that an increase background check will decrease the rate of violent crimes and hence the results are not inconclusive. 
 
-•	Dealer background checks are slightly negatively corelated with total number of homicides, Private seller background checks are slighlty positively correlated with total number of homicides also Total Checks are almost showing very less to no correlation with homicides as seen below:
+
+#### Conclusion 2: Dealer Background checks may reduce firearm homicides and private-seller background checks on firearm homicides is inconclusive.
+
+Dealer background checks are slightly negatively corelated with total number of homicides, Private seller background checks are slighlty positively correlated with total number of homicides also Total Checks are almost showing very less to no correlation with homicides as seen below:
 
  ![](Images/Bchecks_Firearm_homicides.png)
 
