@@ -46,7 +46,7 @@ As seen below the Total Background Checks and Total Dealer Checks conducted each
 
 Below is a bar plot that shows state wise total number of background checks. As seen, the maximum number of checks are administered in the state of Kentucky and least being in the Mariana Islands where population resides on Saipan, Tinian, and Rota. 
 
-![](Images/Background_checks_states.png)
+<img src=Images/Background_checks_states.png width="17000" height="500">
 
 Critiquing on the Conclusions from the research papers as stated above:
 #### Conclusion 1: Effect of background checks on violent crimes is inconclusive.
