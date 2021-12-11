@@ -6,9 +6,10 @@ import seaborn as sns
 import sys
 
 
-def importing_data(filename: str):
+def importing_data(filename: str) -> pd.DataFrame:
     """
-    The function takes file as an input parameter, converts it into a python DataFrame and returns the Dataframe.
+    The function takes csv file as an input and reads it using read_csv().
+    It then converts this file into a python DataFrame and returns the Dataframe.
     :param filename: Name of the file for which DataFrame should be created.
     :return: DataFrame of the input file consisting of all rows and columns.
     >>> importing_data('Test.csv')
@@ -28,7 +29,7 @@ def importing_data(filename: str):
     return df
 
 
-def clean_bchecks(bcheck: pd.DataFrame):
+def clean_bchecks(bcheck: pd.DataFrame) -> pd.DataFrame:
     """
     In this function we extract year from month column and add it to the input dataframe.
     Further we add two new columns to display the total dealer and total private checks conducted.
@@ -55,9 +56,10 @@ def clean_bchecks(bcheck: pd.DataFrame):
     return bcheck
 
 
-def data_aggregation_by_parameter(df: pd.DataFrame, list_of_cols_to_aggregate: list, on_colums_to_aggregate):
+def data_aggregation_by_parameter(df: pd.DataFrame, list_of_cols_to_aggregate: list, on_colums_to_aggregate) -> pd.DataFrame:
     """
-    This function is used to aggregate year wise data for total backgroud checks, total dealer checks and total private checks
+    This function is used to aggregate year wise data for total background checks, total dealer checks
+    and total private checks
     :param df: Updated DataFrame containing NICS firearm background checks data
     :param list_of_cols_to_aggregate: Column to be aggregated
     :param on_colums_to_aggregate: Column based on which data is aggregated
@@ -73,9 +75,9 @@ def data_aggregation_by_parameter(df: pd.DataFrame, list_of_cols_to_aggregate: l
     return df
 
 
-def state_abbreviations():
+def state_abbreviations() -> pd.DataFrame:
     """
-    Mapping state names to their corresponding initials
+    This function maps state names to their corresponding initials
     :return: Correctly mapped state initials DataFrame
     >>> state_abbreviations()
                                        state codes
@@ -204,7 +206,7 @@ def state_abbreviations():
     return us_state_codes
 
 
-def merge_datasets(df1, df2, how_to_join, columns_on_join):  # how should be added as a parameter
+def merge_datasets(df1: pd.DataFrame, df2: pd.DataFrame, how_to_join, columns_on_join) -> pd.DataFrame:
     """
     This function is used to merge two datasets based on a common column.
     :param df1: First dataframe that has to be merged
@@ -222,11 +224,11 @@ def merge_datasets(df1, df2, how_to_join, columns_on_join):  # how should be add
     1          1          2          3
 
     """
-    Joined_df = pd.merge(df1, df2, how=how_to_join, on=columns_on_join)
-    return Joined_df
+    joined_df = pd.merge(df1, df2, how=how_to_join, on=columns_on_join)
+    return joined_df
 
 
-def violentcrime_data(start_year, end_year, state_list):
+def violentcrime_data(start_year, end_year, state_list) -> pd.DataFrame:
     """
     This function is used to fetch the violent crime data from fbi site through API.
     :param start_year: Starting year from where the API has to fetch the data.
@@ -269,7 +271,7 @@ def violentcrime_data(start_year, end_year, state_list):
     return df
 
 
-def cleaning_violent_crime(df_violent_crime):
+def cleaning_violent_crime(df_violent_crime: pd.DataFrame) -> pd.DataFrame:
     """
     This fucntion is used to clean the data from API to make it more meaningful and useful
     :param df_violent_crime: The data from API goes as an input to this function
@@ -297,9 +299,9 @@ def cleaning_violent_crime(df_violent_crime):
 # https://medium.com/@szabo.bibor/how-to-create-a-seaborn-correlation-heatmap-in-python-834c0686b88e
 
 
-def correlationplot(dataframe, plot_name):
+def correlationplot(dataframe: pd.DataFrame, plot_name):
     """
-    This function is used to plot a correlation plot for the given dataframes
+    This function is used to plot a correlation plot for the given dataframes.
     :param dataframe: The dataframe for which the correlation plot has to be plotted.
     :param plot_name: The name of the plot we have plotted using the mentioned dataframe
     :return: Return a heatmap with the correlation plot
@@ -313,7 +315,7 @@ def correlationplot(dataframe, plot_name):
     plt.show()
 
 
-def statefilter(states, bcheck_crimes_state_year):
+def statefilter(states, bcheck_crimes_state_year: pd.DataFrame) -> pd.DataFrame:
     """
     This function is used to apply a filter on the data for the qualifying states.
     :param states: States for which the data has to be filtered
@@ -326,10 +328,11 @@ def statefilter(states, bcheck_crimes_state_year):
     return df
 
 
-def arrestdata_filter(df_arrest, list_of_crimes):
+def arrestdata_filter(df_arrest: pd.DataFrame, list_of_crimes) -> pd.DataFrame:
     """
     This function is used to clean the arrest data with filtering out to homicides
     :param df_arrest: The dataframe which has arrest data loaded in it.
+    :param list_of_crimes: list of crimes used to filter the data for homicides.
     :return: A dataframe which is filtered with homicides and aggregated at year level
     >>> arrestdata_filter(pd.read_csv('arrests_national_adults.csv') ,['Murder and Nonnegligent Homicide','Manslaughter by Negligence'])
         year  total_arrests  white  black  asian_pacific_islander  american_indian
@@ -368,7 +371,7 @@ def arrestdata_filter(df_arrest, list_of_crimes):
 
 def lineplot(x_axis, y_axis_1, y_axis_2):
     """
-
+    This function is used to generate a line plot based on the inputs for the axis.
     :param x_axis:
     :param y_axis:
     :return:
