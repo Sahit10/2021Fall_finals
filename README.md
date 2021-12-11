@@ -127,7 +127,7 @@ Race            | Coefficient of Correlation | Interpretation
 ----------------| ---------------------------| --------------------------------
 White           | -0.77                      | Significant negative correlation
 Black           | -0.87                      | Significant negative correlation
-Pacific Asian   |  0.64                      | Significant positive correlation
+Pacific Asian   |  0.64                      | Positive correlation
 American Indian |  0.79                      | Significant positive correlation
 
 As there is a significant negative correlation between total background checks and total arrests for all the Whites and Blacks, we can clearly infer that an increase in the background checks will significantly decrease the violent crimes for adults and juveniles for mentioned two ethnicities. On the other hand total arrests is positively correlated with total backgrouns checks for Pacific Asian and American Indian, hence we may say that an increase in the total background checks for these two races will lead to an increase in the total number of violent crime incidents. 
