@@ -33,6 +33,9 @@ Six studies examined the overall effect of dealer background checks on firearm h
 
 One analysis found significant effects consistent with private-seller checks increasing firearm homicides, although these estimates became uncertain or significant in the opposite direction in different specifications. Another study found suggestive effects consistent with private-seller checks increasing firearm intimate partner homicides.
 
+## Assumptions:
+1. We have assumed a linear relationship between crimes and background checks as we are analysing for only gun abuse.
+2. We are assuming any violent crime that has happened is due to gun as we donot have any classification across what weapon was used for that crime.
 
 ## Conclusion:
 As seen below the Total Background Checks and Total Dealer Checks conducted each year from 1998 till 2021 increases sharply from 1998 till 1999. After which there is a gradual increase in both the checks with minor fluctuations till 2020 and then there is a steep decline in the checks conducted. One reason can be Covid-19 pandemic which hit the world in 2020 thus reducing the total checks conducted post 2020.
