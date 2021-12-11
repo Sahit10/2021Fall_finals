@@ -14,16 +14,21 @@ Universal background check may reduce gun-related homicides or violent crimes by
 Crime rates are proportional to the firearm background checks processed through the National Instant Criminal Background Check System (NICS). It is necessary that background checks must be conducted before possessing a firearm. We have considered five data sets:
 
 •	[NICS firearm background checks from 1998 to 2021](https://github.com/Sahit10/2021Fall_finals/blob/main/Firearm_homicides.csv)
+  Columns Considered for calculations: Total Checks - Sum of All Columns, Total Dealer checks - Sum of permit,	permit_recheck,	handgun,	long_gun,	other,	multiple	admin , Total Private checks - sum of private_sale_handgun,	private_sale_long_gun,	private_sale_other
 
 •	[Crimes committed by adults in the age group 18 to 65 years from 1994 till 2016.](https://github.com/Sahit10/2021Fall_finals/blob/main/arrests_national_adults.csv)
+  Columns Considered for calculations: year, offence_name, total crimes - Sum of total male ,total female, Ethinicity columns - white	black	asian_pacific_islander	american_indian
 
 •	[Crimes committed by juveniles in the age group 0 to 17 years 1994 till 2016.](https://github.com/Sahit10/2021Fall_finals/blob/main/arrests_national_juvinile.csv)
-
+  Columns Considered for calculations: year, offence_name, total crimes - Sum of total male ,total female, Ethinicity columns - white	black	asian_pacific_islander	american_indian
+  
 •	[Total firearm homicide incidents from 2014 till 2020.](https://github.com/Sahit10/2021Fall_finals/blob/main/Firearm_homicides.csv)
+  Columns Considered for calculations: year,	Total_No_of_Incidents,	Number_of_deaths,	Mass_Shootings,	Defensive_use,	Unintentional_shooting
 
-•	Violent crime incidents from 1998 to 2020 - API 
-
-Based on the above datasets we will be analysing the conclusions stated in the research papers mentioned in References. Following are the conclusions.
+•	Violent crime incidents - API
+  Fetching data of violent crimes from FBI dataset by the given range of year and states mentioned. API key has been generated and used in the url to fetch the data.
+  
+Based on the above datasets we will be analysing the conclusions stated in the research papers mentioned in References along with our own future scope and analysis. Following are the conclusions.
 
 #### Conclusion 1: Effect of background checks on violent crimes is inconclusive. 
 
@@ -60,8 +65,8 @@ Looking at the correlation plot for the filtered states:
 <img src=Images/Bchecks_violent_Filtered_states_crimes.png width="800" height="600">
 
 The value of correlation coefficient for total dealer checks and total background checks vs crimes is -0.86 indicating a high negative correlation between the mentioned two variables. Hence, we can conclude that an Increase in the background checks will decrease the rate of violent crimes.
-Based on our analysis we can clearly deduce that an increase background check will decrease the rate of violent crimes and hence the results are not inconclusive. 
 
+Based on our analysis we can clearly deduce that an increase background check will decrease the rate of violent crimes and hence the results are not inconclusive. 
 
 #### Conclusion 2: Dealer Background checks may reduce firearm homicides and private-seller background checks on firearm homicides is inconclusive.
 
