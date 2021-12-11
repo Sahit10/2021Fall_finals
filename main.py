@@ -228,7 +228,7 @@ def merge_datasets(df1: pd.DataFrame, df2: pd.DataFrame, how_to_join, columns_on
     return joined_df
 
 
-def violentcrime_data(start_year, end_year, state_list) -> pd.DataFrame:
+def violentcrime_data(start_year: str, end_year: str, state_list) -> pd.DataFrame:
     """
     This function is used to fetch the violent crime data from fbi site through API.
     :param start_year: Starting year from where the API has to fetch the data.
@@ -371,10 +371,10 @@ def arrestdata_filter(df_arrest: pd.DataFrame, list_of_crimes) -> pd.DataFrame:
 
 def lineplot(x_axis, y_axis_1, y_axis_2):
     """
-    This function is used to generate a line plot based on the inputs for the axis.
-    :param x_axis:
-    :param y_axis:
-    :return:
+    This function is used to generate a line plot to analyze year wise total background checks and total dealer checks.
+    :param x_axis: x axis column used for plotting.
+    :param y_axis_1: y axis column used for plotting.
+    :param y_axis_2: y axis column used for plotting.
     """
     plt.rc('font', size=12)
     fig, ax = plt.subplots(figsize=(20, 10))
@@ -389,11 +389,10 @@ def lineplot(x_axis, y_axis_1, y_axis_2):
     plt.xticks(x_axis)
 
 
-def barplot(states_plotted):
+def barplot(states_plotted: pd.DataFrame):
     """
-
-    :param states_plotted:
-    :return:
+    This function is used to generate a bar plot to analyze the states where maximum background checks are conducted.
+    :param states_plotted: Dataframe of aggregated state wise data of total background checks.
     """
     plt.rc('font', size=12)
     fig, ax = plt.subplots(figsize=(30, 10))
@@ -428,7 +427,7 @@ if __name__ == '__main__':
                                                        'total_private'],
                                                       ['year', 'state'])
 
-    # Merging States with thier states codes
+    # Merging States with their states codes
     bcheck_year_state_with_codes = merge_datasets(bcheck_year_state, state_abbreviations(),
                                                   'left',
                                                   ["state", "state"])
