@@ -361,10 +361,9 @@ def arrestdata_filter(df_arrest: pd.DataFrame, list_of_crimes) -> pd.DataFrame:
     """
     df_arrest['total_arrests'] = df_arrest['total_male'] + df_arrest['total_female']
     df_arrest_new = df_arrest[df_arrest['offense_name'].isin(list_of_crimes)]
-    df_arrest_new = df_arrest_new[
-        ['year', 'total_arrests', 'white', 'black', 'asian_pacific_islander', 'american_indian']].groupby(
-        'year').sum().reset_index()
-
+    df_arrest_new = data_aggregation_by_parameter(df_arrest_new,
+                                                  ['year', 'total_arrests', 'white', 'black', 'asian_pacific_islander', 'american_indian']
+                                                  ,'year')
     return df_arrest_new
 
 
