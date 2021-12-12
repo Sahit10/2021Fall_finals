@@ -41,7 +41,6 @@ def clean_bchecks(bcheck: pd.DataFrame) -> pd.DataFrame:
     1  2021    Alaska          7572                 7065             17
     2  2021   Arizona         38523                32597              7
     3  2021  Arkansas         21518                16770             13
-    >>>
     """
     bcheck = bcheck.fillna(0)
     bcheck['date'] = pd.to_datetime(bcheck['month'])
@@ -438,13 +437,10 @@ if __name__ == '__main__':
 
     barplot(bchecks_state)
 
-    # List of states to fetch data from the API
-    state_list = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY',
-                  'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND',
-                  'OH', 'OK', 'OR','PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY']
+    state_list = state_abbreviations()
 
     # Fetching violent crime data from API
-    violent_crime = cleaning_violent_crime(violentcrime_data(1999, 2020, state_list))
+    violent_crime = cleaning_violent_crime(violentcrime_data(1999, 2020, state_list['codes'].tolist()))
 
     # Aggregating violent crime data by year
     df_violent_crime_year = data_aggregation_by_parameter(violent_crime,
@@ -464,7 +460,8 @@ if __name__ == '__main__':
     states_with_dealerchecks_mandatory = ['CA', 'CO', 'CT', 'DE', 'MD', 'NV', 'NJ', 'NM', 'NY', 'OR', 'RI', 'VT', 'VA',
                                           'WA']
 
-    #
+    # Plotting all the graphs that are required for the Analysis.
+    # All These graphs are explained in the readme file.
     correlationplot(merge_datasets(bchecks_year, df_violent_crime_year,
                                    'left',
                                    ["year", 'year']),
@@ -534,7 +531,7 @@ if __name__ == '__main__':
                        , 'right'
                        , ['year', 'year']
                        ),
-        'Arrests of adults and juveniles for violent crimes on background checks with ethnicity from 1998 to 2016')
+                    'Arrests of adults and juveniles for violent crimes on background checks with ethnicity from 1998 to 2016')
 
     correlationplot(
         merge_datasets(bchecks_year, arrestdata_filter(pd.concat([arrest_adults,
@@ -544,6 +541,6 @@ if __name__ == '__main__':
                        , 'right'
                        , ['year', 'year']
                        ),
-        'Arrests of adults and juveniles for homicides on background checks with ethnicity from 1998 to 2016')
+                    'Arrests of adults and juveniles for homicides on background checks with ethnicity from 1998 to 2016')
 
     print('The end')

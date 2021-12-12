@@ -1,9 +1,11 @@
 # 2021Fall_finals
 
 ## Team Members:
-1.	Sahit Potnuru (potnuru3), GitHub: sahit10
-2.	Vanika Gupta (vanikag2), GitHub: VanikaGupta95
+
+1. Sahit Potnuru (potnuru3), GitHub: sahit10
+2. Vanika Gupta (vanikag2), GitHub: VanikaGupta95
 ## Effectiveness of background checks on crime rates in US
+
 Background checks for gun purchases are designed to prevent access to guns by convicted felons and other prohibited possessors. About 1 in 5 gun transactions in the U.S. occur without a background check, according to a 2017 study by researchers at Harvard and North-eastern University.
 
 Though more than 90% of the American public supports background checks for all gun sales, a dangerous and deadly loophole in federal gun laws still exempts unlicensed sellers from having to perform any background check whatsoever before selling a firearm. With this loophole, guns easily find their way into the hands of illegal buyers and gun traffickers, dramatically increasing the likelihood of gun homicides and violent crimes.
@@ -11,6 +13,7 @@ Though more than 90% of the American public supports background checks for all g
 Universal background check may reduce gun-related homicides or violent crimes by deterring prohibited possessors from attempting to acquire firearms or by making it harder or more expensive for them to succeed in doing so.
 
 ## Project Goal:
+
 Crime rates are proportional to the firearm background checks processed through the National Instant Criminal Background Check System (NICS). It is necessary that background checks must be conducted before possessing a firearm. We have considered five data sets:
 
 •	[NICS firearm background checks from 1998 to 2021](https://github.com/Sahit10/2021Fall_finals/blob/main/Firearm_homicides.csv)
@@ -44,10 +47,12 @@ Six studies examined the overall effect of dealer background checks on firearm h
 One analysis found significant effects consistent with private-seller checks increasing firearm homicides, although these estimates became uncertain or significant in the opposite direction in different specifications. Another study found suggestive effects consistent with private-seller checks increasing firearm intimate partner homicides.
 
 ## Assumptions:
+
 1. We have assumed a linear relationship between crimes and background checks as we are analysing for only gun abuse.
 2. We are assuming any violent crime that has happened is due to gun as we donot have any classification across what weapon was used for that crime.
 
 ## Conclusion:
+
 As seen below the Total Background Checks and Total Dealer Checks conducted each year from 1998 till 2021 increases sharply from 1998 till 1999. After which there is a gradual increase in both the checks with minor fluctuations till 2020 and then there is a steep decline in the checks conducted. One reason can be Covid-19 pandemic which hit the world in 2020 thus reducing the total checks conducted post 2020.
 
 ![](Images/Background_checks_trend.png)
@@ -89,6 +94,7 @@ Based on our analysis we can conclude that an increase in the dealer checks may 
 
 
 ## Future Scope and Analysis:
+
 Further analysing Adults and Juveniles crime data for total arrests which is the cumulative of arrests for each ethnicity i.e., for White, Black, Pacific Asian, and American Indian against the total background checks conducted from 1998 till 2016.
 
 #### •	Arrests of adults for violent crimes:
@@ -151,11 +157,13 @@ As there is a significant negative correlation between total background checks a
 
 
 ## Limitations:
+
 1. Time frames of the events taken into consideration are different across different cross sections.
 2. The type of crimes taken into consideration are different across different studies.
 3. Different states have different kinds of rules to handle gun violence so cummulative study might have impact due to the difference in rules.
 
 ## References:
+
 1.	https://www.rand.org/research/gun-policy/analysis/background-checks.html#fn2
 2.	https://wamu.org/story/20/06/25/do-universal-background-checks-prevent-gun-violence/
 3.	https://www.rand.org/research/gun-policy/analysis/background-checks/violent-crime.html
