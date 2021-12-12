@@ -18,25 +18,34 @@ Crime rates are proportional to the firearm background checks processed through 
 
 •	[NICS firearm background checks from 1998 to 2021](https://github.com/Sahit10/2021Fall_finals/blob/main/Firearm_homicides.csv)
   
-  Columns Considered for calculations: Total Checks - Sum of All Columns, Total Dealer checks - Sum of permit,	permit_recheck,	handgun,	long_gun,	other,	multiple	admin , Total Private checks - sum of private_sale_handgun,	private_sale_long_gun,	private_sale_other
+  #### Columns Considered for calculations: 
+  Total Checks - Sum of All Columns, Total Dealer checks - Sum of permit,	permit_recheck,	handgun,	long_gun,	other,	multiple	admin , Total Private checks - sum   of private_sale_handgun,	private_sale_long_gun,	private_sale_other
 
 •	[Crimes committed by adults in the age group 18 to 65 years from 1994 till 2016.](https://github.com/Sahit10/2021Fall_finals/blob/main/arrests_national_adults.csv)
   
-  Columns Considered for calculations: year, offence_name, total crimes - Sum of total male ,total female, Ethinicity columns - white	black	asian_pacific_islander	american_indian
+  #### Columns Considered for calculations: 
+  year, offence_name, total crimes - Sum of total male ,total female, Ethinicity columns - white	black	asian_pacific_islander	american_indian
 
 •	[Crimes committed by juveniles in the age group 0 to 17 years 1994 till 2016.](https://github.com/Sahit10/2021Fall_finals/blob/main/arrests_national_juvinile.csv)
  
-  Columns Considered for calculations: year, offence_name, total crimes - Sum of total male ,total female, Ethinicity columns - white	black	asian_pacific_islander	american_indian
+  #### Columns Considered for calculations: 
+  year, offence_name, total crimes - Sum of total male ,total female, Ethinicity columns - white	black	asian_pacific_islander	american_indian
   
 •	[Total firearm homicide incidents from 2014 till 2020.](https://github.com/Sahit10/2021Fall_finals/blob/main/Firearm_homicides.csv)
   
-  Columns Considered for calculations: year,	Total_No_of_Incidents,	Number_of_deaths,	Mass_Shootings,	Defensive_use,	Unintentional_shooting
+  #### Columns Considered for calculations:
+  year,	Total_No_of_Incidents,	Number_of_deaths,	Mass_Shootings,	Defensive_use,	Unintentional_shooting
 
 •	[Violent crime incidents - API](https://crime-data-explorer.fr.cloud.gov/pages/docApi)
  
   Fetching data of violent crimes from FBI dataset by the given range of year and states mentioned. API key has been generated and used in the url to fetch the data.
   
-Based on the above datasets we will be analysing the conclusions stated in the research papers mentioned in References along with our own future scope and analysis. Following are the conclusions.
+  #### Violent Crimes are considered to be the following for arrest data:
+  Murder and Nonnegligent Homicide, Aggravated Assault, Rape, Robbery, Sex Offenses, Manslaughter by Negligence, Simple Assault
+  #### Homicides are considered to be the following for arrest data:
+  Murder and Nonnegligent Homicide, Manslaughter by Negligence
+  
+  Based on the above datasets we will be analysing the conclusions stated in the research papers mentioned in References along with our own future scope and analysis. Following are the conclusions.
 
 #### Conclusion 1: Effect of background checks on violent crimes is inconclusive. 
 
