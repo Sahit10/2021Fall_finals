@@ -19,7 +19,7 @@ Crime rates are proportional to the firearm background checks processed through 
 •	[NICS firearm background checks from 1998 to 2021](https://github.com/Sahit10/2021Fall_finals/blob/main/Firearm_homicides.csv)
   
   #### Columns Considered for calculations: 
-  Total Checks - Sum of All Columns, Total Dealer checks - Sum of permit,	permit_recheck,	handgun,	long_gun,	other,	multiple	admin , Total Private checks - sum   of private_sale_handgun,	private_sale_long_gun,	private_sale_other
+  Total Checks - Sum of All Columns(All types of background checks), Total Dealer checks - Sum of permit,	permit_recheck,	handgun,	long_gun,	other,	multiple	admin , Total Private checks - sum   of private_sale_handgun,	private_sale_long_gun,	private_sale_other
 
 •	[Crimes committed by adults in the age group 18 to 65 years from 1994 till 2016.](https://github.com/Sahit10/2021Fall_finals/blob/main/arrests_national_adults.csv)
   
